@@ -1,0 +1,16 @@
+# Mail Server Platform — Python implementation of the design document
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.3
+sqlalchemy>=2.0
+psycopg[binary]>=3.2          # PostgreSQL 16 driver (metadata database)
+redis>=5.0                    # queue + rate-limit counters
+boto3>=1.34                   # S3 API against MinIO (mail-data bucket)
+dkimpy>=1.1                   # DKIM signing / verification
+dnspython>=2.6                # live DNS record verification + MX lookup
+cryptography>=42.0            # 2048-bit DKIM keygen + Fernet key encryption
+argon2-cffi>=23.1             # Argon2 hashing for SMTP credential passwords
+aiosmtpd>=1.4.4               # inbound :25, submission :587, LMTP :2424
+aiosmtplib>=3.0               # outbound delivery (relay or direct MX) + LMTP client
+httpx>=0.27                   # webhook delivery + optional PowerDNS API calls
